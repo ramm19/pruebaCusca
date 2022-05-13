@@ -7,6 +7,7 @@
         <entry key="app/src/main/res/drawable/background_image.xml" value="0.2315" />
         <entry key="app/src/main/res/drawable/background_search.xml" value="0.2535" />
         <entry key="app/src/main/res/drawable/ic_search.xml" value="0.2535" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/fragment_comments_per_post.xml" value="0.45208333333333334" />
         <entry key="app/src/main/res/layout/fragment_images_per_post.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/fragment_posts.xml" value="0.37604166666666666" />
