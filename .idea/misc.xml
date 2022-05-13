@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/background_search.xml" value="0.2535" />
+        <entry key="app/src/main/res/drawable/ic_search.xml" value="0.2535" />
         <entry key="app/src/main/res/layout/fragment_images_per_post.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/fragment_posts.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/item_post.xml" value="0.375" />
       </map>
     </option>
   </component>
