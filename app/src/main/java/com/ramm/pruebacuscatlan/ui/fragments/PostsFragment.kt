@@ -1,12 +1,12 @@
 package com.ramm.pruebacuscatlan.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ramm.pruebacuscatlan.R
@@ -20,13 +20,16 @@ import com.ramm.pruebacuscatlan.ui.base.ViewState
 import com.ramm.pruebacuscatlan.ui.interfaces.PostListener
 import com.ramm.pruebacuscatlan.ui.utils.afterTextChanged
 import com.ramm.pruebacuscatlan.ui.viewmodels.PostViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PostsFragment : Fragment(),  PostListener{
 
     private val navController get() = findNavController()
     private lateinit var binding: FragmentPostsBinding
-    private val viewModel: PostViewModel by viewModels()
-    private lateinit var postAdapter: PostAdapter
+    private val viewModel: PostViewModel by viewModel()
+    private val postAdapter by lazy {
+        PostAdapter(this)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -60,14 +63,13 @@ class PostsFragment : Fragment(),  PostListener{
                 configRecyclerView(viewState.data)
             }
             is Error -> {
+                Log.e("errorApi", "${viewState.errMessage}")
                 Toast.makeText(requireContext(), "Algo salio mal", Toast.LENGTH_SHORT).show()
             }
-            else -> {}
         }
     }
 
     private fun configRecyclerView(listPost: List<PostInfo>){
-        postAdapter = PostAdapter(this)
         postAdapter.setItems(listPost)
         with(binding.rvPosts){
             setHasFixedSize(true)

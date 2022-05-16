@@ -29,22 +29,5 @@ class CommentViewModel(
                 else -> {}
             }
         }
-
-
-
-
-        /*emit(Loading())
-        val listComments = listOf(
-            CommentInfo(
-                1, 1, "name 1", "email1@test.com", "adlka adklsf lakdfn ad n prueba 1"
-            ),
-            CommentInfo(
-                2, 2, "name 2", "email2@test.com", "adlka adklsf lakdfn ad n prueba 2"
-            ),
-            CommentInfo(
-                3, 3, "name 3", "email3@test.com", "adlka adklsf lakdfn ad n prueba 3"
-            ),
-        )
-        emit(Completed(listComments))*/
     }
 }

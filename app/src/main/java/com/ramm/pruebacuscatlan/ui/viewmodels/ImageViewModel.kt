@@ -30,24 +30,6 @@ class ImageViewModel(
                 else -> {}
             }
         }
-
-
-
-
-
-        /*emit(Loading())
-        val listImage = listOf(
-            ImageInfo(
-                1,1,"", "", "https://via.placeholder.com/150/771796"
-            ),
-            ImageInfo(
-                1,1,"", "", "https://via.placeholder.com/150/d32776"
-            ),
-            ImageInfo(
-                1,1,"", "", "https://via.placeholder.com/150/810b14"
-            )
-        )
-        emit(Completed(listImage))*/
     }
 
 }

@@ -1,5 +1,6 @@
 package com.ramm.pruebacuscatlan.framework.common
 
+import android.util.Log
 import com.google.gson.Gson
 import com.ramm.pruebacuscatlan.core.domain.dto.base.DataSourceError
 import com.ramm.pruebacuscatlan.core.domain.dto.base.Failure
@@ -30,7 +31,10 @@ inline fun <reified T : List<U>, reified U : DomainMapper<R>, R : Any> Response<
             }
             return Success(model)
         }
-        onFailure { return Failure(it) }
+        onFailure {
+            Log.e("errorApi", "${it.errorMessage}")
+            return Failure(it)
+        }
         return Failure(DataSourceError(Throwable("error")))
     } catch (e: IOException) {
         return Failure(DataSourceError(Throwable("error")))

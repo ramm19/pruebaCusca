@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ramm.pruebacuscatlan.core.domain.dto.post.CommentInfo
@@ -16,12 +15,13 @@ import com.ramm.pruebacuscatlan.ui.base.Error
 import com.ramm.pruebacuscatlan.ui.base.Loading
 import com.ramm.pruebacuscatlan.ui.base.ViewState
 import com.ramm.pruebacuscatlan.ui.viewmodels.CommentViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CommentsFragment : Fragment() {
 
     private val navController get() = findNavController()
     private lateinit var binding: FragmentCommentsBinding
-    private val viewModel : CommentViewModel by viewModels()
+    private val viewModel : CommentViewModel by viewModel()
     private lateinit var commentAdapter: CommentAdapter
 
     override fun onCreateView(
@@ -51,7 +51,6 @@ class CommentsFragment : Fragment() {
                 configRecyclerView(viewState.data)
             }
             is Error -> {}
-            else -> {}
         }
     }
 

@@ -39,29 +39,16 @@ class PostViewModel(
             emit(Error(""))
         }.collect {
             when(it){
-                is Success -> emit(Completed(it.data))
-                is Failure -> emit(Error(it.dataSourceError.errorMessage, it.dataSourceError.errorCode))
+                is Success -> {
+                    setListPostToSearch(it.data)
+                    emit(Completed(it.data))
+                }
+                is Failure -> {
+                    emit(Error(it.dataSourceError.errorMessage, it.dataSourceError.errorCode))
+                }
                 else -> {}
             }
         }
-
-
-        /*val listPost = listOf(
-            PostInfo(
-                1,
-                1,
-                "Titulo prueba 1",
-                "body prueba 1"
-            ),
-            PostInfo(
-                1,
-                2,
-                "Titulo prueba 2",
-                "body prueba 2"
-            )
-        )
-        setListPostToSearch(listPost)
-        emit(Completed(listPost))*/
     }
 
 }

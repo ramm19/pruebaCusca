@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.ramm.pruebacuscatlan.core.domain.dto.post.ImageInfo
@@ -16,12 +15,13 @@ import com.ramm.pruebacuscatlan.ui.base.Error
 import com.ramm.pruebacuscatlan.ui.base.Loading
 import com.ramm.pruebacuscatlan.ui.base.ViewState
 import com.ramm.pruebacuscatlan.ui.viewmodels.ImageViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ImagesFragment : Fragment() {
 
     private val navController get() = findNavController()
     private lateinit var binding: FragmentImagesBinding
-    private val viewModel : ImageViewModel by viewModels()
+    private val viewModel : ImageViewModel by viewModel()
     private lateinit var imageAdapter: ImageAdapter
 
     override fun onCreateView(
@@ -51,7 +51,6 @@ class ImagesFragment : Fragment() {
                 configRecyclerView(viewState.data)
             }
             is Error -> {}
-            else -> {}
         }
     }
 
