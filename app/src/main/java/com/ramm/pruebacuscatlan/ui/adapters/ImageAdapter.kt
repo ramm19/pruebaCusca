@@ -2,10 +2,9 @@ package com.ramm.pruebacuscatlan.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
-import com.ramm.pruebacuscatlan.core.domain.dto.ImageInfo
-import com.ramm.pruebacuscatlan.databinding.ItemCommentRightBinding
+import com.bumptech.glide.Glide
+import com.ramm.pruebacuscatlan.core.domain.dto.post.ImageInfo
 import com.ramm.pruebacuscatlan.databinding.ItemImageBinding
 
 class ImageAdapter: RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
@@ -30,8 +29,11 @@ class ImageAdapter: RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
     class ViewHolder(
         private val itemImageBinding: ItemImageBinding
     ): RecyclerView.ViewHolder(itemImageBinding.root){
-        fun bind(image: ImageInfo){
-            itemImageBinding.ivImage.setImageURI(image.thumbnailUrl.toUri())
+        fun bind(imageLoad: ImageInfo){
+            Glide
+                .with(itemView.context)
+                .load(imageLoad.thumbnailUrl)
+                .into(itemImageBinding.ivImage)
         }
     }
 }

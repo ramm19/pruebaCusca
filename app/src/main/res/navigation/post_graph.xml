@@ -19,12 +19,12 @@
     </fragment>
     <fragment
         android:id="@+id/commentsPerPostFragment"
-        android:name="com.ramm.pruebacuscatlan.ui.fragments.CommentsPerPostFragment"
+        android:name="com.ramm.pruebacuscatlan.ui.fragments.CommentsFragment"
         android:label="fragment_comments_per_post"
-        tools:layout="@layout/fragment_comments_per_post" />
+        tools:layout="@layout/fragment_comments" />
     <fragment
         android:id="@+id/imagesPerPostFragment"
-        android:name="com.ramm.pruebacuscatlan.ui.fragments.ImagesPerPostFragment"
+        android:name="com.ramm.pruebacuscatlan.ui.fragments.ImagesFragment"
         android:label="fragment_images_per_post"
-        tools:layout="@layout/fragment_images_per_post" />
+        tools:layout="@layout/fragment_images" />
 </navigation>

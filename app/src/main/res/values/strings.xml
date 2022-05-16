@@ -7,4 +7,6 @@
 
     <string name="comments_title">Comments</string>
     <string name="comments_hint_search">Buscar Comentarios</string>
+
+    <string name="images_title">Album</string>
 </resources>

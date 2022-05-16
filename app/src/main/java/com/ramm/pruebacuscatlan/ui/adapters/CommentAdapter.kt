@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.ramm.pruebacuscatlan.core.domain.dto.CommentInfo
+import com.ramm.pruebacuscatlan.core.domain.dto.post.CommentInfo
 import com.ramm.pruebacuscatlan.databinding.ItemCommentLeftBinding
 import com.ramm.pruebacuscatlan.databinding.ItemCommentRightBinding
 

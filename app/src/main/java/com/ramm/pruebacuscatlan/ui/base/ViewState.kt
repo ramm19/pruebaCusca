@@ -3,7 +3,7 @@ package com.ramm.pruebacuscatlan.ui.base
 import org.json.JSONObject
 
 sealed class ViewState<out T : Any>
-class Completed<out T : Any>(val data: T, val status: Int? = null, val message: String? = null) :
+class Completed<out T : Any>(val data: T) :
     ViewState<T>()
 
 class Error<out T : Any>(val error: Throwable? = null) : ViewState<T>() {

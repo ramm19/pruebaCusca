@@ -1,4 +1,4 @@
-package com.ramm.pruebacuscatlan.core.domain.dto
+package com.ramm.pruebacuscatlan.core.domain.dto.post
 
 data class PostInfo(
     val userId: Int,

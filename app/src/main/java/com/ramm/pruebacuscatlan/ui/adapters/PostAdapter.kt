@@ -3,7 +3,7 @@ package com.ramm.pruebacuscatlan.ui.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.ramm.pruebacuscatlan.core.domain.dto.PostInfo
+import com.ramm.pruebacuscatlan.core.domain.dto.post.PostInfo
 import com.ramm.pruebacuscatlan.databinding.ItemPostBinding
 import com.ramm.pruebacuscatlan.ui.interfaces.PostListener
 
