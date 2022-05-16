@@ -7,7 +7,6 @@ import com.ramm.pruebacuscatlan.framework.di.repositoryModule
 import com.ramm.pruebacuscatlan.ui.di.presentationModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
-import org.koin.androidx.workmanager.koin.workManagerFactory
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
 
@@ -24,7 +23,6 @@ class MyApp: Application() {
             androidContext(this@MyApp)
             androidLogger(if (BuildConfig.DEBUG) Level.ERROR else Level.NONE)
             modules(appModules + coreModules + frameworkModules)
-            //workManagerFactory()
         }
     }
 

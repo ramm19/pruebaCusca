@@ -13,7 +13,6 @@ import com.ramm.pruebacuscatlan.ui.base.Loading
 import com.ramm.pruebacuscatlan.ui.base.ViewState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.collect
 
 class ImageViewModel(
     private val getImagesUseCase: GetImagesUseCase

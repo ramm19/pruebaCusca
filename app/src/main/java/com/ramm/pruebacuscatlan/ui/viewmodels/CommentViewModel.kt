@@ -18,13 +18,31 @@ import kotlinx.coroutines.flow.collect
 class CommentViewModel(
     private val getCommentsUseCase: GetCommentsUseCase
 ): ViewModel() {
+
+    private var listCommentsToSearch = listOf<CommentInfo>()
+    private fun setListCommentsToSearch(list: List<CommentInfo>){
+        listCommentsToSearch = list
+    }
+    fun getListCommentToSearch(textSearch: String): List<CommentInfo>{
+        val listCommentsFound = mutableListOf<CommentInfo>()
+        listCommentsToSearch.map {
+            if (it.email.lowercase().contains(textSearch.lowercase()) || it.body.lowercase().contains(textSearch.lowercase()))
+                listCommentsFound.add(it)
+        }
+
+        return listCommentsFound
+    }
+
     fun getComments(idPost: Int) = liveData<ViewState<List<CommentInfo>>>(context = Dispatchers.Main) {
         emit(Loading())
         getCommentsUseCase(GetCommentsUseCaseEntry(idPost)).catch {
             emit(Error(""))
         }.collect {
             when(it){
-                is Success -> emit(Completed(it.data))
+                is Success -> {
+                    setListCommentsToSearch(it.data)
+                    emit(Completed(it.data))
+                }
                 is Failure -> emit(Error(it.dataSourceError.errorMessage, it.dataSourceError.errorCode))
                 else -> {}
             }

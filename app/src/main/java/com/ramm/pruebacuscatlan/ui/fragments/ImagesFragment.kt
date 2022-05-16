@@ -34,14 +34,14 @@ class ImagesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        getImagesObserver()
+        getImagesObserver(arguments?.getInt(idPost) ?: 0)
         binding.ivBack.setOnClickListener {
             navController.popBackStack()
         }
     }
 
-    private fun getImagesObserver(){
-        viewModel.getImages(1).observe(viewLifecycleOwner, ::handlerGetImages)
+    private fun getImagesObserver(idPost: Int){
+        viewModel.getImages(idPost).observe(viewLifecycleOwner, ::handlerGetImages)
     }
 
     private fun handlerGetImages(viewState: ViewState<List<ImageInfo>>){
@@ -62,5 +62,9 @@ class ImagesFragment : Fragment() {
             layoutManager = GridLayoutManager(requireContext(), 2)
             adapter = imageAdapter
         }
+    }
+
+    companion object{
+        const val idPost = "idPost"
     }
 }

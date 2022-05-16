@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.ramm.pruebacuscatlan.R
 import com.ramm.pruebacuscatlan.core.domain.dto.post.ImageInfo
 import com.ramm.pruebacuscatlan.databinding.ItemImageBinding
 
@@ -33,6 +34,7 @@ class ImageAdapter: RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
             Glide
                 .with(itemView.context)
                 .load(imageLoad.thumbnailUrl)
+                .error(R.drawable.ic_baseline_error_24)
                 .into(itemImageBinding.ivImage)
         }
     }

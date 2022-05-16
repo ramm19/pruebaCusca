@@ -21,10 +21,20 @@
         android:id="@+id/commentsPerPostFragment"
         android:name="com.ramm.pruebacuscatlan.ui.fragments.CommentsFragment"
         android:label="fragment_comments_per_post"
-        tools:layout="@layout/fragment_comments" />
+        tools:layout="@layout/fragment_comments" >
+        <argument
+            android:name="idPost"
+            app:argType="integer"
+            android:defaultValue="0"/>
+    </fragment>
     <fragment
         android:id="@+id/imagesPerPostFragment"
         android:name="com.ramm.pruebacuscatlan.ui.fragments.ImagesFragment"
         android:label="fragment_images_per_post"
-        tools:layout="@layout/fragment_images" />
+        tools:layout="@layout/fragment_images" >
+        <argument
+            android:name="idPost"
+            app:argType="integer"
+            android:defaultValue="0"/>
+    </fragment>
 </navigation>

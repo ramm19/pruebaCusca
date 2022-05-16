@@ -13,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 val networkModule = module {
-    single { GsonBuilder().create() }
+    single { GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create() }
     single { GsonConverterFactory.create() as Converter.Factory }
 
     single(named("connect")) {

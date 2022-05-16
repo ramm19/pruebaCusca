@@ -14,6 +14,7 @@ import com.ramm.pruebacuscatlan.ui.base.Completed
 import com.ramm.pruebacuscatlan.ui.base.Error
 import com.ramm.pruebacuscatlan.ui.base.Loading
 import com.ramm.pruebacuscatlan.ui.base.ViewState
+import com.ramm.pruebacuscatlan.ui.utils.afterTextChanged
 import com.ramm.pruebacuscatlan.ui.viewmodels.CommentViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -34,14 +35,23 @@ class CommentsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        getComments()
+        getComments(arguments?.getInt(idPost) ?: 0)
         binding.ivBack.setOnClickListener {
             navController.popBackStack()
         }
+
+        binding.etSearch.afterTextChanged {
+            searchText(it)
+        }
     }
 
-    private fun getComments(){
-        viewModel.getComments(1).observe(viewLifecycleOwner, ::handlerGetComments)
+    private fun searchText(search: String){
+        val listCommentsFound = viewModel.getListCommentToSearch(search)
+        commentAdapter.setItems(listCommentsFound)
+    }
+
+    private fun getComments(idPost: Int){
+        viewModel.getComments(idPost).observe(viewLifecycleOwner, ::handlerGetComments)
     }
 
     private fun handlerGetComments(viewState: ViewState<List<CommentInfo>>){
@@ -62,5 +72,9 @@ class CommentsFragment : Fragment() {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = commentAdapter
         }
+    }
+
+    companion object{
+        const val idPost = "idPost"
     }
 }

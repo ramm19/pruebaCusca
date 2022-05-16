@@ -6,6 +6,8 @@ import com.ramm.pruebacuscatlan.core.domain.dto.base.DataSourceError
 import com.ramm.pruebacuscatlan.core.domain.dto.base.Failure
 import com.ramm.pruebacuscatlan.core.domain.dto.base.Result
 import com.ramm.pruebacuscatlan.core.domain.dto.base.Success
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 import retrofit2.Response
 import java.io.IOException
 
@@ -18,18 +20,14 @@ inline fun <T : Any> Response<T>.onFailure(action: (DataSourceError) -> Unit) {
 
 }
 
-
 inline fun <reified T : List<U>, reified U : DomainMapper<R>, R : Any> Response<T>.getData(): Result<List<R>> {
-    val gson = Gson()
 
     try {
         onSuccess {
-            val gsonData = jsonObjectFromString(it.toString())
-            val jsonArray = jsonObjectFromObject(gsonData).asJsonArray
-            val model = jsonArray.map { json ->
-                gson.fromJson(json, U::class.java).mapToDomainModel()
+            val listDomain = it.map { listResponse ->
+                listResponse.mapToDomainModel()
             }
-            return Success(model)
+            return Success(listDomain)
         }
         onFailure {
             Log.e("errorApi", "${it.errorMessage}")

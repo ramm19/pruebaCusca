@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ramm.pruebacuscatlan.R
@@ -80,11 +81,13 @@ class PostsFragment : Fragment(),  PostListener{
     }
 
     override fun commentClick(idPost: Int) {
-        navController.navigate(R.id.action_postsFragment_to_commentsPerPostFragment)
+        val bundleComment = bundleOf(CommentsFragment.idPost to idPost)
+        navController.navigate(R.id.action_postsFragment_to_commentsPerPostFragment, bundleComment)
     }
 
     override fun imageClick(idPost: Int) {
-        navController.navigate(R.id.action_postsFragment_to_imagesPerPostFragment)
+        val bundleImage = bundleOf(ImagesFragment.idPost to idPost)
+        navController.navigate(R.id.action_postsFragment_to_imagesPerPostFragment, bundleImage)
     }
 
 }

@@ -24,13 +24,13 @@ class PostViewModel(
         listPostToSearch = list
     }
     fun getListPostToSearch(textSearch: String) : List<PostInfo>{
-        val listPostFounded = mutableListOf<PostInfo>()
+        val listPostFound = mutableListOf<PostInfo>()
         listPostToSearch.map {
-            if (it.title.contains(textSearch) || it.body.contains(textSearch))
-                listPostFounded.add(it)
+            if (it.title.lowercase().contains(textSearch.lowercase()) || it.body.lowercase().contains(textSearch.lowercase()))
+                listPostFound.add(it)
         }
 
-        return listPostFounded
+        return listPostFound
     }
 
     fun getPosts() = liveData<ViewState<List<PostInfo>>>(context = Dispatchers.Main){
